@@ -1,0 +1,48 @@
+[
+    {
+        "id": "25ff72eb668e819a",
+        "type": "ui_slider",
+        "z": "767c76ac0c2cf2cb",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "3f7c176932db2652",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "626cb8417dd7ebfc"
+            ]
+        ]
+    },
+    {
+        "id": "3f7c176932db2652",
+        "type": "ui_group",
+        "name": "LED 2",
+        "tab": "71934cdbe818a789",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "71934cdbe818a789",
+        "type": "ui_tab",
+        "name": "Home 1",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
