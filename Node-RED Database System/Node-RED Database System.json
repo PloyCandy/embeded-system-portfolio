@@ -1,0 +1,114 @@
+[
+    {
+        "id": "4e67c9f3d1541bdd",
+        "type": "tab",
+        "label": "L10_Ex6",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0ad1c531c00202d8",
+        "type": "sqlite",
+        "z": "4e67c9f3d1541bdd",
+        "mydb": "6e859ad5975c26cb",
+        "sqlquery": "prepared",
+        "sql": "insert into SensorData (TheTime, TheValue) values ($TimeVal, $SensorVal)\n",
+        "name": "Database1",
+        "x": 910,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e808458b7e86a087",
+        "type": "debug",
+        "z": "4e67c9f3d1541bdd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c6bed85a85966506",
+        "type": "function",
+        "z": "4e67c9f3d1541bdd",
+        "name": "Params variable",
+        "func": "msg.params = { $TimeVal:Date.now(), $SensorVal:msg.payload }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "0ad1c531c00202d8",
+                "e808458b7e86a087"
+            ]
+        ]
+    },
+    {
+        "id": "cf4362972cb2a2b2",
+        "type": "mqtt in",
+        "z": "4e67c9f3d1541bdd",
+        "name": "",
+        "topic": "/IoT/Test1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "9026267c4f4a85aa",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "c6bed85a85966506"
+            ]
+        ]
+    },
+    {
+        "id": "6e859ad5975c26cb",
+        "type": "sqlitedb",
+        "db": "/home/pi/Database1",
+        "mode": "RWC"
+    },
+    {
+        "id": "9026267c4f4a85aa",
+        "type": "mqtt-broker",
+        "name": "Local MQTT Broker",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
